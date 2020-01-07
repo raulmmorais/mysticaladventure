@@ -8,6 +8,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2D;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -34,6 +35,10 @@ public class MysticalMain extends Game {
 
 	private Box2DDebugRenderer box2DDebugRenderer;
 	private World world;
+	private GameContactListener contactListener;
+
+	private static final float FIXED_TIME_STEP = 1 / 60f;
+	private float accumulator;
 
 	@Override
 	public void create () {
@@ -41,6 +46,8 @@ public class MysticalMain extends Game {
 
 		Box2D.init();
 		world = new World(new Vector2(0, -9.81f), true);
+		contactListener = new GameContactListener();
+		world.setContactListener(contactListener);
 		box2DDebugRenderer = new Box2DDebugRenderer();
 
 		screenCach = new EnumMap<ScreenType, AbstractScreen>(ScreenType.class);
@@ -75,6 +82,16 @@ public class MysticalMain extends Game {
 
 	public Box2DDebugRenderer getBox2DDebugRenderer() {
 		return box2DDebugRenderer;
+	}
+
+	@Override
+	public void render() {
+		super.render();
+		accumulator += Math.min(0.25f, Gdx.graphics.getRawDeltaTime());
+		while (accumulator >= FIXED_TIME_STEP){
+			world.step(FIXED_TIME_STEP, 6, 2);
+			accumulator -= FIXED_TIME_STEP;
+		}
 	}
 
 	@Override

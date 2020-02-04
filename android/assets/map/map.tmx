@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="right-up" compressionlevel="0" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="7">
+ <tileset firstgid="1" source="tileset.tsx"/>
+ <layer id="1" name="ground" width="64" height="64" locked="1">
+  <data encoding="base64" compression="zlib">
+   eAHt0jERAAAMhDD0vX9BldElAwa4rJo8YIABBhhggAEGGGCAAQYYYIABBhhggAEGGGCAAQYYYIABBhhggAEGGGCAAQYYYIABBhhggAEGGGCAAQYYYIABBhhggAEGGGCAAQYYYODVwAEtDqA9
+  </data>
+ </layer>
+ <layer id="2" name="background_1" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eAHtlwtqxDAMRPc0hf5L/+39D1YNdEAIbze7pGCZZxi8dtiQeZKl5HBgQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgEBHAh/x0P+llwZAXuMZ99Zb3PM59N3Av2K0t67jnlf4J/7k//QE9j77uh/nv0/929L7z82RTvF/inx9CHnW77pWHz+HQSf/t+HtlEb+P+N/X6GaP93O/ynvuj7yqXdGvefdF4nVavG/CU9V9rmC/7vwl6WYa+3cqN61Xsm//VYGW/zrO0e18/FX5mJGsT31sMfsPcde14/FX7Wufju6/nXzn3PATDyP/I9qonuBekNH//Zb55H/LXtiNPuoXkdrnW/pPZTzXf1P3/l/SfVg5jHyW/dUD9Tnqhf3+RX815qXGeD/svjrvMw+HGfHX7OVr12S//W8zMgie6y+87XV/dvraBYX+a89X32+c+1TPo781j3nRZ7FwzrGoEP+/wB+1HDA
+  </data>
+ </layer>
+ <layer id="3" name="backtround_2" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eAHt2UkOwjAQBMC8jTX8/0PYt2iQYh8GyRMVUk5emK6OuLBtPgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBQUeDdhv7nU9Eka+ZX1kVF75G/aHFJY+s/CbLoNfovWlzS2PpPgix6jf6LFpc0tv6TIIteo/+ixSWNrf8kyEWuebQ59sPzHMx1a+tXegdils8gf1+OZyaOLLslZhnl7+9LPLNsuInBYpZR/rh/4iuW3hLzyH9eV/Q6373+av89P/5XcB+MfLX8g7g/yxXyfwGfmBOL
+  </data>
+ </layer>
+ <layer id="4" name="foreground_1" width="64" height="64">
+  <data encoding="base64" compression="zlib">
+   eAHt1EEKgzAURVH31Xnb/a+olU504h2EkqYcIWB4Yv47gtvmIkCAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECBAgQIECAAAECZ4H7eWtHgAABAgQIECDwAwK39wzHtY903O/3/3xVv8pXt6l+leu/tkB938rXbv/511110P9KZ/2svm/lqwtUv8qr/6MemJxXv8onjz98fPWrvAZ41gOT8+pX+eTxh4+vfpUPDzD5BdWv8snjDx9f/SofHmDyC/Z+tSaP+NXjX8HoCzU=
+  </data>
+ </layer>
+ <objectgroup id="5" name="gameObjects" locked="1">
+  <object id="2" gid="86" x="32.6667" y="1850" width="32" height="32"/>
+  <object id="3" gid="12" x="36.6667" y="1722" width="32" height="32"/>
+  <object id="4" gid="12" x="68.6667" y="1634" width="32" height="32"/>
+  <object id="5" gid="12" x="213.333" y="1747.33" width="32" height="32"/>
+  <object id="6" gid="90" x="218" y="1979.33" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup id="6" name="playerStartLocation" locked="1">
+  <object id="1" x="144" y="1876">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

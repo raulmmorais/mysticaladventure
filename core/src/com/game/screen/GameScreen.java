@@ -2,9 +2,13 @@ package com.game.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.controllers.Controller;
 import com.badlogic.gdx.controllers.Controllers;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.ChainShape;
@@ -16,6 +20,7 @@ import com.game.MysticalMain;
 import static com.game.MysticalMain.BIT_BOX;
 import static com.game.MysticalMain.BIT_PLAYER;
 import static com.game.MysticalMain.BIT_GROUND;
+import static com.game.MysticalMain.UNIT_SCALE;
 
 public class GameScreen extends AbstractScreen {
 
@@ -23,9 +28,17 @@ public class GameScreen extends AbstractScreen {
     private final BodyDef bodyDef;
     private final FixtureDef fixtureDef;
     private final Body player;
+
+    private final OrthogonalTiledMapRenderer mapRenderer;
+    private final AssetManager assetManager;
+    private final OrthographicCamera gameCamera;
+
     public GameScreen(MysticalMain context) {
         super(context);
         Gdx.app.debug(TAG, "Inicio construtor");
+
+        assetManager = context.getAssetManager();
+        gameCamera = context.getGameCamera();
 
         bodyDef = new BodyDef();
         fixtureDef = new FixtureDef();
@@ -70,11 +83,12 @@ public class GameScreen extends AbstractScreen {
         chainShape.dispose();
         Gdx.app.debug(TAG, "Criada a sala");
 
+        mapRenderer = new OrthogonalTiledMapRenderer(null, UNIT_SCALE, context.getSpriteBatch());
     }
 
     @Override
     public void show() {
-
+        mapRenderer.setMap(assetManager.get("map/map.tmx", TiledMap.class));
     }
 
     @Override
@@ -102,7 +116,6 @@ public class GameScreen extends AbstractScreen {
         }else{
             speedY = 0;
         }
-//TODO stopped in lesson 10
         player.applyLinearImpulse(
                 (speedX - player.getLinearVelocity().x) * player.getMass(),
                 (speedY - player.getLinearVelocity().y) * player.getMass(),
@@ -112,7 +125,10 @@ public class GameScreen extends AbstractScreen {
         );
 
         viewport.apply(true);
+        mapRenderer.setView(gameCamera);
+        mapRenderer.render();
         box2DDebugRenderer.render(world, viewport.getCamera().combined);
+        //TODO stopped in lesson 11
     }
 
     @Override
